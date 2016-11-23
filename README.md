@@ -4,7 +4,7 @@
 [travis-url]: https://travis-ci.org/tsq/ali-sms-sdk
 
 
-Nodejs SDK for Aliyun SMS service
+Nodejs SDK for [Aliyun SMS service](https://help.aliyun.com/product/44282.html)
 
 ## Install
 
@@ -38,7 +38,7 @@ param|type|description
 ----|----|---|----
 accessKeyID | string | access key id, get from aliyun
 accessKeySecret | string | access key secret, get from aliyun 
-paramString | object | ali sms param which you have defined in  aliyun sms dashboard
+paramString | object | ali sms param which you have defined on aliyun sms dashboard
 recNum | array | phone numbers of users
 signName | string | ali sms param, get from aliyun sms dashboard
 templateCode | string | ali sms param, get from aliyun sms dashboard
