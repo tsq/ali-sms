@@ -37,3 +37,9 @@ paramString | object | ali sms param which you have defined in  aliyun sms dashb
 recNum | array | phone numbers of users
 signName | string | ali sms param, get from aliyun sms dashboard
 templateCode | string | ali sms param, get from aliyun sms dashboard
+
+## Debug
+
+```
+DEBUG=sms npm start
+```
