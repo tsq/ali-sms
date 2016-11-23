@@ -1,5 +1,5 @@
 {
-  "name": "ali-sms-sdk",
+  "name": "ali-sms",
   "version": "1.0.0",
   "description": "nodejs sdk for aliyun sms",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsq/ali-sms-sdk.git"
+    "url": "git+https://github.com/tsq/ali-sms.git"
   },
   "dependencies": {
     "debug": "^2.3.3",
@@ -18,15 +18,15 @@
   "keywords": [
     "aliyun",
     "sms",
-    "ali-sdk"
+    "ali"
   ],
   "author": "tsq",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tsq/ali-sms-sdk/issues"
+    "url": "https://github.com/tsq/ali-sms/issues"
   },
   "engines": {
     "node": ">=6"
   },
-  "homepage": "https://github.com/tsq/ali-sms-sdk#readme"
+  "homepage": "https://github.com/tsq/ali-sms#readme"
 }

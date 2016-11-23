@@ -9,7 +9,7 @@ Nodejs SDK for [Aliyun SMS service](https://help.aliyun.com/product/44282.html)
 ## Install
 
 ```
-npm install ali-sms-sdk
+npm install ali-sms
 ```
 
 ## Usage
