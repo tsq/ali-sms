@@ -1,4 +1,4 @@
-# ali-sms-sdk
+# ali-sms
 [![build status][travis-image]][travis-url]
 [travis-image]: https://travis-ci.org/tsq/ali-sms.svg?branch=master
 [travis-url]: https://travis-ci.org/tsq/ali-sms
@@ -15,7 +15,7 @@ npm install ali-sms
 ## Usage
 
 ```javascript
-const sms = require("ali-sms-sdk");
+const sms = require("ali-sms");
 const accessKeyID     = process.env.ALI_SMS_ACCESSKEYID;
 const accessKeySecret = process.env.ALI_SMS_ACCESSKEYSECRET;
 
