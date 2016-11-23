@@ -1,4 +1,9 @@
 # ali-sms-sdk
+[![build status][travis-image]][travis-url]
+[travis-image]: https://travis-ci.org/tsq/ali-sms-sdk.svg?branch=master
+[travis-url]: https://travis-ci.org/tsq/ali-sms-sdk
+
+
 Nodejs SDK for Aliyun SMS service
 
 ## Install
