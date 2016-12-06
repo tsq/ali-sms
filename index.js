@@ -2,11 +2,11 @@ const crypto  = require("crypto");
 const request = require("request");
 const debug   = require('debug')('sms');
 
-const nonce           = Date.now();
-const date            = new Date();
 const url             = 'http://sms.aliyuncs.com/';
 
 module.exports = function (config, cb) {
+  const nonce           = Date.now();
+  const date            = new Date();
   const errorMsg = [];
   if (!config.accessKeyID) {
     errorMsg.push('accessKeyID required');
