@@ -1,7 +1,7 @@
 # ali-sms
 [![build status][travis-image]][travis-url]
-[travis-image]: https://travis-ci.org/tsq/ali-sms.svg?branch=master
-[travis-url]: https://travis-ci.org/tsq/ali-sms
+[travis-image]: https://travis-ci.org/tsq-old/ali-sms.svg?branch=master
+[travis-url]: https://travis-ci.org/tsq-old/ali-sms
 
 
 Nodejs SDK for [Aliyun SMS service](https://help.aliyun.com/product/44282.html)
