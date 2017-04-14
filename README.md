@@ -1,8 +1,5 @@
 # ali-sms
-[![build status][travis-image]][travis-url]
-[travis-image]: https://travis-ci.org/tsq-old/ali-sms.svg?branch=master
-[travis-url]: https://travis-ci.org/tsq-old/ali-sms
-
+[![Build Status](https://travis-ci.org/tsq-old/ali-sms.svg?branch=master)](https://travis-ci.org/tsq-old/ali-sms)
 
 Nodejs SDK for [Aliyun SMS service](https://help.aliyun.com/product/44282.html)
 
@@ -35,7 +32,7 @@ sms(config, (err, body) => {
 ## Config 
 
 param|type|description
-----|----|---|----
+----|----|--------------
 accessKeyID | string | access key id, get from aliyun
 accessKeySecret | string | access key secret, get from aliyun 
 paramString | object | ali sms param which you have defined on aliyun sms dashboard
