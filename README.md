@@ -40,8 +40,9 @@ recNum | array | phone numbers of users
 signName | string | ali sms param, get from aliyun sms dashboard
 templateCode | string | ali sms param, get from aliyun sms dashboard
 
-## Debug
+## Note
 
-```
-DEBUG=sms npm start
-```
+It's often you'll get some errors if the params are not valid. So please double check `accessKeyID`, `accessKeySecret`, `paramString`, `signName`, `templateCode` on Aliyun dashboard.
+
+## Official document
+https://help.aliyun.com/document_detail/52856.html
