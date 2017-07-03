@@ -41,7 +41,12 @@ signName | string | ali sms param, get from aliyun sms dashboard
 templateCode | string | ali sms param, get from aliyun sms dashboard
 
 ## Note
+From 2017.06.22, Aliyun has [upgraded the sms service](https://help.aliyun.com/document_detail/55501.html). For a new sms user, Aliyun
+forces you using the new sms service. So, your sms dashboard should be `https://dysms.console.aliyun.com/dysms.htm`. But for an old sms user,
+you can still use the old sms service and your sms dashboard should be `https://mns.console.aliyun.com/#/home/cn-hangzhou`. If you are 
+the old sms user. Please install version `1.0.2`
 
-It's often you'll get some errors if the params are not valid. So please double check `accessKeyID`, `accessKeySecret`, `paramString`, `signName`, `templateCode` on Aliyun dashboard.
-
+```
+npm install ali-sms@1.0.2
+```
 
