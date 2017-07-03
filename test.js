@@ -7,14 +7,12 @@ const config = {
   accessKeyID       : accessKeyID,
   accessKeySecret   : accessKeySecret,
   paramString       : {"code":"12345"},
-  recNum            : ['17705143392'],
+  recNum            : ['17705143393'],
   signName          : "心血管风险评估",
   templateCode      : 'SMS_72910068'
 };
 sms(config, (err, body) => {
-  if (err) {
-    console.error(err);
-  }
+  console.log('err, body:', err, body);
   assert.ok(!err);
   body = JSON.parse(body);
   assert.ok(body.Code === 'OK');
