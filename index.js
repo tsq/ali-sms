@@ -1,12 +1,55 @@
+/**
+ * @license
+ * Copyright tsq.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/tsq/ali-sms/LICENSE
+ */
+
+
 const crypto  = require("crypto");
 const request = require("request");
 const debug   = require('debug')('sms');
+const uuid    = require("uuid/v1");
 
-const url             = 'http://sms.aliyuncs.com/';
+const domain  = 'http://dysmsapi.aliyuncs.com';
 
-module.exports = function (config, cb) {
-  const nonce           = Date.now();
-  const date            = new Date();
+// https://help.aliyun.com/document_detail/54229.html?spm=5176.doc55359.6.576.yA9ZH7&parentId=44282
+// it's very important that object should be sorted by key
+const sortKey = (obj) => {
+  const ordered = {};
+  Object.keys(obj).sort().forEach(function(key) {
+    ordered[key] = obj[key];
+  });
+  return ordered;
+};
+
+// found from python sdk
+const standardString = (query) => {
+  let str = encodeURIComponent(query);
+  str.replace('+', '%20')
+    .replace('*', '%2A')
+    .replace('%7E', '~');
+  return str;
+};
+
+// https://help.aliyun.com/document_detail/54229.html?spm=5176.doc55359.6.576.yA9ZH7&parentId=44282
+// signature algorithm
+const getSignature = (paramObj, accessKeySecret) => {
+  let param = sortKey(paramObj);
+  let signStr = [];
+  for (let i in param) {
+    signStr.push(`${encodeURIComponent(i)}=${encodeURIComponent(param[i])}`);
+  }
+  signStr = signStr.join('&');
+  signStr = 'GET&%2F&' + standardString(signStr);
+  const sign = crypto.createHmac("sha1", accessKeySecret + '&')
+    .update(signStr)
+    .digest('base64');
+  return encodeURIComponent(sign);
+};
+
+module.exports = (config, cb) => {
   const errorMsg = [];
   if (!config.accessKeyID) {
     errorMsg.push('accessKeyID required');
@@ -29,47 +72,35 @@ module.exports = function (config, cb) {
   if (errorMsg.length) {
     return cb(errorMsg.join(','));
   }
-  
+
   const param = {
-    AccessKeyId: config.accessKeyID,
-    Action: 'SingleSendSms',
-    Format: 'JSON',
-    ParamString: JSON.stringify(config.paramString),
-    RecNum: config.recNum.join(','),
+    PhoneNumbers: config.recNum.join(','),
+    TemplateParam: JSON.stringify(config.paramString),
+    OutId: uuid(),
+    Format: 'json',
+    Timestamp: new Date().toISOString(),
     RegionId: 'cn-hangzhou',
-    SignName: config.signName,
-    SignatureMethod: 'HMAC-SHA1',
-    SignatureNonce: nonce,
     SignatureVersion: '1.0',
+    AccessKeyId: config.accessKeyID,
     TemplateCode: config.templateCode,
-    Timestamp: date.toISOString(),
-    Version: '2016-09-27'
+    SignatureMethod: 'HMAC-SHA1',
+    Version: '2017-05-25',
+    SignName: config.signName,
+    Action: 'SendSms',
+    SignatureNonce: uuid()
   };
-  let signStr = [];
-  for (let i in param) {
-    signStr.push(`${encodeURIComponent(i)}=${encodeURIComponent(param[i])}`);
-  }
-  signStr = signStr.join('&');
-  signStr = 'POST&%2F&' + encodeURIComponent(signStr);
-  const sign = crypto.createHmac("sha1", config.accessKeySecret + '&')
-    .update(signStr)
-    .digest('base64');
-  const signature = encodeURIComponent(sign);
+  const signature = getSignature(param, config.accessKeySecret);
   let reqBody = [`Signature=${signature}`];
   for (let i in param) {
-    reqBody.push(`${i}=${param[i]}`);
+    reqBody.push(`${i}=${encodeURIComponent(param[i])}`);
   }
   reqBody = reqBody.join('&');
   debug('signature: %s', signature);
   debug('request body: %s', reqBody);
+  const requrl = `${domain}/?${reqBody}`;
+
   request({
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    uri: url,
-    body: reqBody,
-    method: 'POST'
-  }, function (err, res, body) {
-    cb(err, body);
-  })
+    uri: requrl,
+    method: 'GET'
+  }, (err, res, body) => cb(err, body));
 };

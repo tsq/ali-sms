@@ -1,6 +1,6 @@
 {
   "name": "ali-sms",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "nodejs sdk for aliyun sms",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "debug": "^2.3.3",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "uuid": "^3.1.0"
   },
   "keywords": [
     "aliyun",

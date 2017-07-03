@@ -1,7 +1,7 @@
 # ali-sms
 [![Build Status](https://travis-ci.org/tsq/ali-sms.svg?branch=master)](https://travis-ci.org/tsq/ali-sms)
 
-Nodejs SDK for [Aliyun SMS service](https://help.aliyun.com/product/44282.html)
+Nodejs SDK for [Aliyun SMS service](https://www.aliyun.com/product/sms)
 
 ## Install
 
@@ -44,5 +44,4 @@ templateCode | string | ali sms param, get from aliyun sms dashboard
 
 It's often you'll get some errors if the params are not valid. So please double check `accessKeyID`, `accessKeySecret`, `paramString`, `signName`, `templateCode` on Aliyun dashboard.
 
-## Official document for error solution
-https://help.aliyun.com/document_detail/52856.html
+

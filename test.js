@@ -6,13 +6,13 @@ const accessKeySecret = process.env.ALI_SMS_ACCESSKEYSECRET;
 const config = {
   accessKeyID       : accessKeyID,
   accessKeySecret   : accessKeySecret,
-  paramString       : {code: '1234'},
+  paramString       : {"code":"12345"},
   recNum            : ['17705143392'],
-  signName          : "心血管生态",
-  templateCode      : 'SMS_62010006'
+  signName          : "心血管风险评估",
+  templateCode      : 'SMS_72910068'
 };
 sms(config, (err, body) => {
   assert.ok(!err);
   body = JSON.parse(body);
-  assert.ok(body.hasOwnProperty('Model'));
+  assert.ok(body.Code === 'OK');
 });
