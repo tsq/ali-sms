@@ -12,6 +12,9 @@ const config = {
   templateCode      : 'SMS_72910068'
 };
 sms(config, (err, body) => {
+  if (err) {
+    console.error(err);
+  }
   assert.ok(!err);
   body = JSON.parse(body);
   assert.ok(body.Code === 'OK');

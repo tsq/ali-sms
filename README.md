@@ -47,6 +47,6 @@ you can still use the old sms service and your sms dashboard should be `https://
 the old sms user. Please install version `1.0.2`
 
 ```
-npm install ali-sms@1.0.2
+npm install ali-sms@1.0.2 --save
 ```
 
