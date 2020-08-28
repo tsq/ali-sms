@@ -10,7 +10,7 @@
 const crypto  = require("crypto");
 const request = require("request");
 const debug   = require('debug')('sms');
-const uuid    = require("uuid/v1");
+const uuid    = require("uuid").v1;
 
 const domain  = 'http://dysmsapi.aliyuncs.com';
 
@@ -99,8 +99,23 @@ module.exports = (config, cb) => {
   debug('request body: %s', reqBody);
   const requrl = `${domain}/?${reqBody}`;
 
-  request({
-    uri: requrl,
-    method: 'GET'
-  }, (err, res, body) => cb(err, body));
+  if (typeof cb === 'function') {
+    request({
+      uri: requrl,
+      method: 'GET'
+    }, (err, res, body) => cb(err, body));
+  } else {
+    return new Promise((resolve, reject) => {
+      request({
+        uri: requrl,
+        method: 'GET'
+      }, (err, res, body) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(body);
+        }
+      });
+    })
+  }
 };

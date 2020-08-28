@@ -12,9 +12,9 @@
     "url": "git+https://github.com/tsq/ali-sms.git"
   },
   "dependencies": {
-    "debug": "^2.3.3",
-    "request": "^2.79.0",
-    "uuid": "^3.1.0"
+    "debug": "^4.1.1",
+    "request": "^2.88.2",
+    "uuid": "^8.3.0"
   },
   "keywords": [
     "aliyun",

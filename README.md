@@ -27,6 +27,9 @@ const config = {
 sms(config, (err, body) => {
   console.log(err, body);
 });
+// or:
+// const body = await sms(config)
+// console.log(body)
 ```
 
 ## Config 
